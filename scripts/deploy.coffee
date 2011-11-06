@@ -11,4 +11,4 @@ module.exports = (robot) ->
         branch: branch
       })
       .post() (err, res, body) ->
-        msg.send "deployed #{app} from #{branch}"
+        msg.send body
