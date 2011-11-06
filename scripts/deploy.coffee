@@ -1,6 +1,6 @@
 # Deploying apps
 #
-# deploy <app> <branch> - Deploys given branch of the given application.
+# deploy <app> from <branch> - Deploys given branch of the given application.
 module.exports = (robot) ->
   robot.respond /deploy (.*) from (.*)/i, (msg) ->
     app = msg.match[1]
