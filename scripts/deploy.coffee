@@ -11,4 +11,4 @@ module.exports = (robot) ->
         branch: branch
       })
       .post() (err, res, body) ->
-        msg.send body
+        msg.send body.replace(/(\n|\r)+$/, '')
