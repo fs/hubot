@@ -6,6 +6,5 @@
 
 module.exports = (robot) ->
   robot.respond /help$/i, (msg) ->
-    msg.send 'test'
-    #msg.send robot.helpCommands().join("\n")
+    msg.send robot.helpCommands().join("\n")
 
