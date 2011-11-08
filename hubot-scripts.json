@@ -1,5 +1,4 @@
-["redis-brain.coffee", "tweet.coffee", "shipit.coffee", "google.coffee",
- "ascii.coffee", "bing.coffee", "eight-ball.coffee", "giftv.coffee",
- "haters.coffee", "polite.coffee", "quote.coffee", "remind.coffee",
- "rubygems.coffee", "weather.coffee", "webshot.coffee", "wordnik.coffee",
- "xkcd.coffee"]
+["redis-brain.coffee", "tweet.coffee", "shipit.coffee", "ascii.coffee",
+ "bing.coffee", "eight-ball.coffee", "giftv.coffee", "haters.coffee",
+ "polite.coffee", "quote.coffee", "remind.coffee", "rubygems.coffee",
+ "weather.coffee", "webshot.coffee", "wordnik.coffee", "xkcd.coffee"]
