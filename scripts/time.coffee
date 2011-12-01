@@ -6,23 +6,25 @@
 #
 
 module.exports = (robot) ->
-  robot.respond /log ([0-9.]+) on "([^"]+)"$/i, (msg) ->
+  robot.respond /log ([0-9.]+) on "([^"]+)"(?: for (today|yesterday))?$/i, (msg) ->
     user_id = msg.message.user.id
     time = msg.match[1]
     title = msg.match[2]
-    date = dateKeyFor(null)
+    date_key = msg.match[3] || "today"
+    date = dateKeyFor(date_key)
 
     addTimeLogForDate(robot, date, user_id, time, title)
-    msg.send "ok, logged #{time} on \"#{title}\""
+    msg.send "ok, logged #{time} on \"#{title}\" for #{date_key}"
 
-  robot.respond /show time logged$/i, (msg) ->
+  robot.respond /show time logged(?: for (today|yesterday))?$/i, (msg) ->
     user_id = msg.message.user.id
-    date = dateKeyFor(null)
+    date_key = msg.match[1] || "today"
+    date = dateKeyFor(date_key)
 
     if log = timeLogForDate(robot, date, user_id)
       msg.send "#{msg.message.user.name}:\n" + ("#{item.time.toFixed(1)} #{item.title}" for item in log).join("\n")
     else
-      msg.send "nothing has been logged yet"
+      msg.send "nothing has been logged yet for #{date_key}"
 
 addTimeLogForDate = (robot, date, user_id, time, title) ->
   robot.brain.data.time_logs ||= {}
@@ -38,4 +40,7 @@ timeLogForDate = (robot, date, user_id) ->
   log[user_id]
 
 dateKeyFor = (date) ->
-  parseInt(new Date().getTime() / 1000 / 3600 / 24)
+  millisecondsPerDay = 24 * 3600 * 1000
+  key = parseInt(new Date().getTime() / millisecondsPerDay)
+  key -= 1 if date is 'yesterday'
+  key
