@@ -1,8 +1,7 @@
 # Log time spent on different tasks
 #
-# log <hours> on "<task title>" [for today|for yesterday|for last Mon/Tue/Wed/Thu/Fri]
-# remove logged <hours> on "<task title>" [for today|for yesterday|for last Mon/Tue/Wed/Thu/Fri]
-# show time logged [for yesterday|for today|for last sprint]
+# log <hours> on "<task title>" [for today|for yesterday]
+# show time logged [for today|for yesterday]
 #
 
 module.exports = (robot) ->
