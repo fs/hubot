@@ -24,7 +24,7 @@ module.exports = (robot) ->
     
     if msg.match[1]
       if logs
-        msg.send "#{formatDateKey(date)}\n---------------\n" + formatLogForUsers(robot, logs)
+        msg.send "#{formatDateKey(date)}\n---------------------\n\n" + formatLogForUsers(robot, logs)
       else
         msg.send "nothing has been logged yet for #{date_key}"
     else
