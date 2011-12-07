@@ -21,7 +21,7 @@ module.exports = (robot) ->
     date = dateKeyFor(date_key)
 
     logs = usersLoggedForDate(robot, date)
-    
+
     if msg.match[1]
       if logs
         msg.send "#{formatDateKey(date)}\n---------------------\n\n" + formatLogForUsers(robot, logs)
@@ -32,6 +32,16 @@ module.exports = (robot) ->
         msg.send formatLogForUser(robot, user_id, log)
       else
         msg.send "nothing has been logged yet for #{date_key}"
+
+  robot.respond /show all time logged for all time/i, (msg) ->
+    logs = robot.brain.data.time_logs || {}
+    result = ""
+    
+    for date, user_logs of logs
+      result += "#{formatDateKey(date)}\n---------------------\n\n"
+      result += formatLogForUsers(robot, user_logs)
+
+    msg.send result
 
 addTimeLogForDate = (robot, date, user_id, time, title) ->
   robot.brain.data.time_logs ||= {}
