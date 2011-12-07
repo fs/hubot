@@ -39,7 +39,7 @@ module.exports = (robot) ->
     
     for date, user_logs of logs
       result += "#{formatDateKey(date)}\n---------------------\n\n"
-      result += formatLogForUsers(robot, user_logs)
+      result += formatLogForUsers(robot, user_logs) + "\n\n"
 
     msg.send result
 
