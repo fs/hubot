@@ -4,9 +4,10 @@
 module.exports = (robot) ->
   robot.respond /deploy (.*) from (.*)/i, (msg) ->
     msg.http("http://services.flatsourcing.com/deploy")
-       .query({
+       .query
           project: msg.match[1]
           branch: msg.match[2]
-        })
        .post() (err, res, body) ->
-          msg.send body.replace(/(\n|\r)+$/, '')
+         msd.send 'deployed'
+         #msg.send body.replace(/(\n|\r)+$/, '')
+
