@@ -8,6 +8,5 @@ module.exports = (robot) ->
           project: msg.match[1]
           branch: msg.match[2])
        .post() (err, res, body) ->
-         msg.send 'deployed'
-         #msg.send body.replace(/(\n|\r)+$/, '')
+         msg.send body.replace(/(\n|\r)+$/, '')
 
