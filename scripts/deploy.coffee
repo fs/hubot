@@ -4,9 +4,9 @@
 # build <app>( from <branch>) - Builds given branch of the given application.
 module.exports = (robot) ->
   robot.respond /deploy ([^ ]*)(?: from (.*))?/i, (msg) ->
-    options = {project: msg.match[1]}
+    options = {}
     options.branch = msg.match[2] if msg.match[2]?
-    msg.http("http://services.flatsourcing.com/deploy")
+    msg.http("http://services.flatsourcing.com/deploy/#{msg.match[1]}")
        .query(options)
        .post() (err, res, body) ->
          msg.send body.replace(/(\n|\r)+$/, '')
