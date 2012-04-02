@@ -16,4 +16,4 @@ module.exports = (robot) ->
     options.branch = msg.match[2] if msg.match[2]?
     msg.http("http://services.flatsourcing.com/build/#{msg.match[1]}")
        .query(options)
-       .post() (err, res, body)
+       .post() (err, res, body) ->
